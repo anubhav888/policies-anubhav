@@ -23,8 +23,8 @@ spec:
         - Namespace
     generate:
       kind: NetworkPolicy
-      name: default-deny
-      namespace: "{{request.object.metadata.name}}"
+      name: rds-access
+      namespace: rds-test
       synchronize: true
       data:
         spec:
