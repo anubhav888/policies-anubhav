@@ -23,7 +23,7 @@ spec:
         - Namespace
     generate:
       kind: NetworkPolicy
-      name: default-deny
+      name: dns-access
       namespace: "{{request.object.metadata.name}}"
       synchronize: true
       data:
