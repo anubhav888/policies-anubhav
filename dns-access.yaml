@@ -32,16 +32,16 @@ spec:
             - namespaceSelector:
                 matchLabels:
                   name: kube-system
-          ports:
-          - protocol: UDP
+            ports:
+            - protocol: UDP
             port: 53
-          - protocol: TCP
+            - protocol: TCP
             port: 53
           - to:
             - ipBlock:
-              cidr: 172.20.0.10/32
-          ports:
-          - protocol: UDP
-            port: 53
-          - protocol: TCP
-            port: 53
+                cidr: 172.20.0.10/32
+            ports:
+            - protocol: UDP
+              port: 53
+            - protocol: TCP
+              port: 53
