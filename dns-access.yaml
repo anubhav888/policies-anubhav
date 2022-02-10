@@ -34,9 +34,9 @@ spec:
                   name: kube-system
             ports:
             - protocol: UDP
-            port: 53
+              port: 53
             - protocol: TCP
-            port: 53
+              port: 53
           - to:
             - ipBlock:
                 cidr: 172.20.0.10/32
