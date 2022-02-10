@@ -1,7 +1,7 @@
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
-  name: rds-network-access
+  name: rds-access
   annotations:
     policies.kyverno.io/title: Add Network Policy
     policies.kyverno.io/category: Multi-Tenancy
@@ -22,16 +22,16 @@ spec:
       synchronize: true
       data:
         spec:
-          # select all pods in the namespace
-          podSelector:
-              matchLabels:
-                run: pgsql-postgresql-client-1
-          egress:
-          - to: 
-            - ipBlock: 
-                cidr: 172.0.0.0/8
-            ports:
-            - protocol: TCP
-              port: 5432
-          policyTypes:
-          - Egress
+   podSelector:
+     matchLabels:
+       run: "pgsql-postgresql-client-1"
+   policyTypes:
+   - Egress
+   egress:
+   - to: 
+     - ipBlock: 
+         cidr: 172.31.29.37/32
+     ports:
+     - protocol: TCP
+       port: 5432
+
