@@ -31,4 +31,4 @@ spec:
           egress:
           - to:
             - ipBlock
-                cidr: 172.31.29.37/32
+                cidr: 172.31.29.37/32    
