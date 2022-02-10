@@ -23,16 +23,16 @@ spec:
       data:
           spec:
           # select all pods in the namespace
-  podSelector:
-    matchLabels:
-      run: "pgsql-postgresql-client-1"
-  policyTypes:
-  - Egress
-  egress:
-  - to:
-    - ipBlock:
-        cidr: 172.31.29.37/32
-    ports:
-    - protocol: TCP
-      port: 5432
+            podSelector:
+              matchLabels:
+                run: "pgsql-postgresql-client-1"
+            policyTypes:
+            - Egress
+            egress:
+            - to:
+              - ipBlock:
+                  cidr: 172.31.29.37/32
+            ports:
+            - protocol: TCP
+              port: 5432
 
