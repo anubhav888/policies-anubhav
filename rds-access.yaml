@@ -33,5 +33,5 @@ spec:
             - ipBlock:
                 cidr: 172.31.29.37/32
             ports:
-              protocol: tcp
+            - protocol: tcp
               port: 5432
