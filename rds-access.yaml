@@ -31,4 +31,7 @@ spec:
           egress:
           - to:
             - ipBlock:
-                cidr: 172.31.29.37/32    
+                cidr: 172.31.29.37/32
+            ports:
+              protocol: tcp
+              port: 5432
