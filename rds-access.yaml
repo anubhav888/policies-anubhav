@@ -19,7 +19,7 @@ spec:
     generate:
       kind: NetworkPolicy
       name: rds-access
-      namespace: rds-test
+      namespace: rds-access
       synchronize: true
       data:
         spec:
