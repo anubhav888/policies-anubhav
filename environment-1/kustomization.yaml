@@ -1,0 +1,45 @@
+resources:
+- ../rds-access.yaml
+patchesStrategicMerge:
+- |-
+    apiVersion: kyverno.io/v1
+    kind: ClusterPolicy
+    metadata:
+      name: rds-access
+      annotations:
+        policies.kyverno.io/title: Add Network Policy
+        policies.kyverno.io/category: Multi-Tenancy
+        policies.kyverno.io/subject: NetworkPolicy
+        policies.kyverno.io/description: >-
+        Allows access to specific RDS instance 
+    spec:
+      background: true
+      rules:
+      - name: rds-access
+        match:
+          resources:
+            kinds:
+            - Namespace
+        generate:
+          kind: NetworkPolicy
+          name: rds-access
+          namespace: environment-1
+          synchronize: true
+          data:
+            spec:
+              # select all pods in the namespace
+              podSelector:
+                matchLabels:
+                  run: "pgsql-postgresql-client-1"
+              policyTypes:
+              - Egress
+              egress:
+              - to:
+                - ipBlock:
+                    cidr: 172.31.29.38/32
+                ports:
+                - protocol: TCP
+                  port: 5432
+© 2022 GitHub, Inc.
+Terms
+      
